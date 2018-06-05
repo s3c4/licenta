@@ -4,6 +4,7 @@ import {Chat} from "../../interfaces/chat.interface";
 import {FormGroup} from "@angular/forms";
 import {Storage} from "@ionic/storage";
 import {User} from "../../interfaces/user.interface";
+import {UserFireStoreService} from "../../services/userFireStore.service";
 
 @Component({
   selector: 'general',
@@ -18,7 +19,8 @@ export class GeneralPage {
 
   constructor(
     public navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    private afs: UserFireStoreService
   ) {
     this.formChat = Chat.newChatForm();
     // console.log(this.formChat.getRawValue());
@@ -29,7 +31,7 @@ export class GeneralPage {
     this.storage.get('fireUser').then((user: User.FireUser) => {
       console.log(user);
     });
-
+    this.afs.getUsers();
   }
 
   /**

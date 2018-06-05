@@ -25,6 +25,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 // -->Import: services
 import { AuthService } from '../services/auth.service';
 import { HelpService } from '../services/help.service';
+import { UserFireStoreService } from '../services/userFireStore.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { HelpService } from '../services/help.service';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HelpService,
-    AuthService
+    AuthService,
+    UserFireStoreService
   ]
 })
 export class AppModule {}
