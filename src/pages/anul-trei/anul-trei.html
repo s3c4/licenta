@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img src="../../assets/imgs/logo.png" alt="logo" height="25px"><br>
+      <span>Anul III - {{ activeComponent }}</span>
+    </ion-title>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>
+  <header-component [(activeComponent)]="activeComponent"></header-component>
+  <general-posts *ngIf="activeComponent == 'Posts'"></general-posts>
+  <general-chat *ngIf="activeComponent == 'Chat'"></general-chat>
+  <ion-row class="top" [style.bottom]="this.activeComponent == 'Chat' ? '60px' : '8px'">
+    <button ion-button icon-only (click)="scrollTop()" >
+      <ion-icon name="arrow-up"></ion-icon>
+    </button>
+  </ion-row>
+</ion-content>
+
+<ion-footer *ngIf="activeComponent == 'Chat'">
+  <form [formGroup]="formChat">
+    <ion-row class="chat-form">
+      <ion-col col-10 no-padding>
+        <ion-textarea formControlName="text" type="text" name="text" placeholder="New comment"></ion-textarea>
+      </ion-col>
+      <ion-col col-2 no-padding>
+        <button ion-button icon-only no-margin><ion-icon name="send"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-footer>

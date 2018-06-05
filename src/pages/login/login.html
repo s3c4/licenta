@@ -1,0 +1,20 @@
+<ion-content #content>
+    <div class="login-box">
+      <p text-center>
+        <img src="../../assets/imgs/logo.png" alt="logo" height="50px">
+      </p>
+      <form [formGroup]="loginForm">
+        <ion-row>
+          <ion-col col-12 no-padding>
+            <ion-input formControlName="email" type="email" name="userName" placeholder="Email"></ion-input>
+          </ion-col>
+          <ion-col col-12 no-padding>
+            <ion-input formControlName="password" type="password" name="password" placeholder="Password"></ion-input>
+          </ion-col>
+          <ion-col col-12 no-padding>
+            <button ion-button icon-only no-margin (click)="submitForm()"><ion-icon name="send"></ion-icon> Login</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+</ion-content>

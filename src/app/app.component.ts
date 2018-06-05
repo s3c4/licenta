@@ -3,8 +3,12 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { GeneralPage } from '../pages/general/general';
+import { AnulUnuPage } from '../pages/anul-unu/anul-unu';
+import { AnulDoiPage } from '../pages/anul-doi/anul-doi';
+import { AnulTreiPage } from '../pages/anul-trei/anul-trei';
+import { SecretariatPage } from '../pages/secretariat/secretariat';
+import { LoginPage } from "../pages/login/login";
 
 @Component({
   templateUrl: 'app.html'
@@ -12,17 +16,21 @@ import { ListPage } from '../pages/list/list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
-
-  pages: Array<{title: string, component: any}>;
+  rootPage: any = LoginPage;
+  pages: Array<{title: string, component: any, icon: string}>;
+  activePage: string;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'General', component: GeneralPage, icon: 'home' },
+      { title: 'Secretariat', component: SecretariatPage, icon: 'paper' },
+      { title: 'Anul I', component: AnulUnuPage, icon: 'paper-plane' },
+      { title: 'Anul II', component: AnulDoiPage, icon: 'plane' },
+      { title: 'Anul III', component: AnulTreiPage, icon: 'jet' },
+      { title: 'Cont', component: LoginPage, icon: 'contact' }
     ];
 
   }
@@ -37,8 +45,16 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    // -->Check: active page
+    if (page.component.name == 'GeneralPage') {
+      this.nav.setRoot(page.component); // set as root if is general page
+    } else {
+      this.activePage = this.nav.getActive().name;
+      if (this.activePage !== page.component.name) {
+        this.nav.push(page.component); // push only if we select a non active page
+      } else {
+        console.log('No need to call the same page!');
+      }
+    }
   }
 }
