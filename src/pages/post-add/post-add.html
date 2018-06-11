@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img src="../../assets/imgs/logo.png" alt="logo" height="25px"><br>
+      <span>Creare post</span>
+    </ion-title>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>
+  <form  (ngSubmit)="addPost()" #addPostFormTag="ngForm">
+
+    <ion-list [formGroup]="addPostForm">
+      <ion-item>
+        <ion-input type="text" class="form-control" formControlName="title" placeholder="Title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" class="form-control" formControlName="documentUrl" placeholder="Document link share"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea type="text" class="form-control" formControlName="text" placeholder="Continut" rows="16"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+</ion-content>
+
+<ion-footer class="footer-action" no-border>
+    <ion-buttons>
+      <button ion-button full large type="submit" (tap)="addPostFormTag.ngSubmit.emit()">Post</button>
+    </ion-buttons>
+</ion-footer>

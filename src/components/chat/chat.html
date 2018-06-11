@@ -1,11 +1,12 @@
 <ion-card>
 
   <ion-card-header>
-    <span>Profesor 1 - 01/01/2020 15:34</span>
+    <span *ngIf="chat.createdDate">{{ chat.userName }} - {{ chat.createdDate | date: 'dd/MM/yyyy HH:mm' }}</span>
   </ion-card-header>
 
   <ion-card-content>
-    <p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt dolores iusto laboriosam molestias pariatur totam veniam voluptas voluptatibus? Animi dolorem laudantium minima repellat? Accusantium aliquam aperiam aspernatur atque, autem beatae cum dolor eius exercitationem fugiat inventore itaque molestias nihil obcaecati odit quibusdam quos recusandae, saepe similique, sint tenetur totam veniam.ds</p>
+    <h2>{{ chat.title }}</h2>
+    <p class="post-content">{{ chat.text }}</p>
   </ion-card-content>
 
 </ion-card>

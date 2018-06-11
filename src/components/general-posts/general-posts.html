@@ -1,14 +1,10 @@
 <ion-row>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
-  <post></post>
+  <ion-col col-12>
+    <button ion-button full (click)="goToAddPost()">
+      Add new post
+    </button>
+  </ion-col>
+  <ion-col *ngFor="let post of posts" col-12>
+    <post [post]="post"></post>
+  </ion-col>
 </ion-row>
-
-

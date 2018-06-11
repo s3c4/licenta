@@ -15,6 +15,8 @@ import { AnulDoiPage } from '../pages/anul-doi/anul-doi';
 import { AnulTreiPage } from '../pages/anul-trei/anul-trei';
 import { SecretariatPage } from '../pages/secretariat/secretariat';
 import { LoginPage } from '../pages/login/login'
+import { PostAddPage } from "../pages/post-add/post-add";
+import { ContPage } from "../pages/cont/cont";
 
 // -->Import: modules
 import { CommonComponentsModule } from '../components/components.module';
@@ -26,6 +28,8 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AuthService } from '../services/auth.service';
 import { HelpService } from '../services/help.service';
 import { UserFireStoreService } from '../services/userFireStore.service';
+import { PostFireStoreService } from "../services/postFireStore.service";
+import { ChatFireStoreService } from "../services/chatFireStore.service";
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import { UserFireStoreService } from '../services/userFireStore.service';
     AnulUnuPage,
     AnulDoiPage,
     AnulTreiPage,
-    SecretariatPage
+    SecretariatPage,
+    PostAddPage,
+    ContPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,9 @@ import { UserFireStoreService } from '../services/userFireStore.service';
     AnulUnuPage,
     AnulDoiPage,
     AnulTreiPage,
-    SecretariatPage
+    SecretariatPage,
+    PostAddPage,
+    ContPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +70,9 @@ import { UserFireStoreService } from '../services/userFireStore.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HelpService,
     AuthService,
-    UserFireStoreService
+    UserFireStoreService,
+    PostFireStoreService,
+    ChatFireStoreService
   ]
 })
 export class AppModule {}

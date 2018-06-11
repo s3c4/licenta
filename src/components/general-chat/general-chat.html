@@ -1,8 +1,5 @@
 <ion-row>
-  <chat></chat>
-  <chat></chat>
-  <chat></chat>
-  <chat></chat>
-  <chat></chat>
-  <chat></chat>
+  <ion-col *ngFor="let chat of chats" col-12>
+    <chat [chat]="chat"></chat>
+  </ion-col>
 </ion-row>

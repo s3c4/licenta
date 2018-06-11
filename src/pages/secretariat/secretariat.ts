@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {Content, NavController} from 'ionic-angular';
+import {Content} from 'ionic-angular';
 
 @Component({
   selector: 'secretariat',
@@ -9,7 +9,7 @@ export class SecretariatPage {
 
   @ViewChild(Content) content: Content;
 
-  constructor(public navCtrl: NavController) {}
+  constructor() {}
 
   ionViewDidLoad() {}
 

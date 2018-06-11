@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <img src="../../assets/imgs/logo.png" alt="logo" height="25px"><br>
+      <span>Cont</span>
+    </ion-title>
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content>
+  <ion-card>
+    <ion-card-header>
+      Informatii utilizator
+    </ion-card-header>
+    <ion-card-content *ngIf="fireUser">
+      <p>First name: {{ fireUser.firstName }}</p>
+      <p>Last name: {{ fireUser.lastName }}</p>
+      <p>Email: {{ fireUser.email }}</p>
+      <p>Role: {{ fireUser.role }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

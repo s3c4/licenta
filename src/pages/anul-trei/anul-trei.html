@@ -12,8 +12,8 @@
 
 <ion-content #content>
   <header-component [(activeComponent)]="activeComponent"></header-component>
-  <general-posts *ngIf="activeComponent == 'Posts'"></general-posts>
-  <general-chat *ngIf="activeComponent == 'Chat'"></general-chat>
+  <general-posts *ngIf="activeComponent == 'Posts'" [role]="role"></general-posts>
+  <general-chat *ngIf="activeComponent == 'Chat'" [role]="role"></general-chat>
   <ion-row class="top" [style.bottom]="this.activeComponent == 'Chat' ? '60px' : '8px'">
     <button ion-button icon-only (click)="scrollTop()" >
       <ion-icon name="arrow-up"></ion-icon>
@@ -22,7 +22,7 @@
 </ion-content>
 
 <ion-footer *ngIf="activeComponent == 'Chat'">
-  <form [formGroup]="formChat">
+  <form [formGroup]="formChat" (ngSubmit)="onSubmit()">
     <ion-row class="chat-form">
       <ion-col col-10 no-padding>
         <ion-textarea formControlName="text" type="text" name="text" placeholder="New comment"></ion-textarea>

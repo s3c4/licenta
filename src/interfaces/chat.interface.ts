@@ -5,11 +5,9 @@ export namespace Chat {
    * Chat interface
    */
   export interface Chat {
-    id: string
-    userId: string
+    uid: string
+    createdDate: string
     userName: string
-    date: string
-    title: string
     text: string
   }
 
@@ -19,11 +17,9 @@ export namespace Chat {
    * @type {Chat.Chat}
    */
   export const newChat = <Chat> {
-    id: '',
-    userId: '',
+    uid: '',
+    createdDate: '',
     userName: '',
-    date: '',
-    title: '',
     text: ''
   };
 
@@ -35,12 +31,10 @@ export namespace Chat {
    */
   export function newChatForm(data?: Chat): FormGroup {
     const form = new FormGroup({
-      id: new FormControl(''),
-      userId: new FormControl(''),
+      createdDate: new FormControl(''),
+      uid: new FormControl(''),
       userName: new FormControl(''),
-      date: new FormControl(''),
-      title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      text: new FormControl('', [Validators.required, Validators.maxLength(1000)])
+      text: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
     });
 
     if(data) {

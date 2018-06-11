@@ -1,14 +1,14 @@
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 export namespace Post {
+
   /**
    * Post interface
    */
   export interface Post {
-    id: string
-    userId: string
+    uid: string
     userName: string
-    date: string
+    createdDate: string
     documentUrl: string
     title: string
     text: string
@@ -20,10 +20,9 @@ export namespace Post {
    * @type {Post.Post}
    */
   export const newPost = <Post> {
-    id: '',
-    userId: '',
+    uid: '',
     userName: '',
-    date: '',
+    createdDate: '',
     documentUrl: '',
     title: '',
     text: ''
@@ -37,13 +36,12 @@ export namespace Post {
    */
   export function newPostForm(data?: Post): FormGroup {
     const fg = new FormGroup({
-      id: new FormControl(''),
-      userId: new FormControl(''),
+      uid: new FormControl(''),
       userName: new FormControl(''),
-      date: new FormControl(''),
+      createdDate: new FormControl(''),
       documentUrl: new FormControl(''),
       title: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-      text: new FormControl('', [Validators.required, Validators.maxLength(1000)])
+      text: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
     });
 
     if(data)

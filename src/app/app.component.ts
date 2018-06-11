@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from "@ionic/storage";
 
 import { GeneralPage } from '../pages/general/general';
 import { AnulUnuPage } from '../pages/anul-unu/anul-unu';
@@ -9,6 +10,7 @@ import { AnulDoiPage } from '../pages/anul-doi/anul-doi';
 import { AnulTreiPage } from '../pages/anul-trei/anul-trei';
 import { SecretariatPage } from '../pages/secretariat/secretariat';
 import { LoginPage } from "../pages/login/login";
+import {ContPage} from "../pages/cont/cont";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,11 +18,16 @@ import { LoginPage } from "../pages/login/login";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = GeneralPage;
+  rootPage: any = LoginPage;
   pages: Array<{title: string, component: any, icon: string}>;
   activePage: string;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private storage: Storage
+  ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -30,7 +37,7 @@ export class MyApp {
       { title: 'Anul I', component: AnulUnuPage, icon: 'paper-plane' },
       { title: 'Anul II', component: AnulDoiPage, icon: 'plane' },
       { title: 'Anul III', component: AnulTreiPage, icon: 'jet' },
-      { title: 'Cont', component: LoginPage, icon: 'contact' }
+      { title: 'Cont', component: ContPage, icon: 'contact' }
     ];
 
   }
@@ -41,6 +48,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.storage.get('fireUser').then((user) => {
+        if(user === null) {
+          this.nav.setRoot(this.rootPage);
+        }
+      });
+
     });
   }
 
