@@ -12,6 +12,9 @@ import { SecretariatPage } from '../pages/secretariat/secretariat';
 import { LoginPage } from "../pages/login/login";
 import {ContPage} from "../pages/cont/cont";
 
+import { Network } from "@ionic-native/network";
+import { HelpService } from "../services/help.service";
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -26,7 +29,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage
+    private storage: Storage,
+    private network: Network,
+    private helper: HelpService
   ) {
     this.initializeApp();
 
@@ -52,6 +57,14 @@ export class MyApp {
         if(user === null) {
           this.nav.setRoot(this.rootPage);
         }
+      });
+      // -->Show: toast message when connection is on
+      this.network.onConnect().subscribe(() => {
+        this.helper.showToast('Connected!', 'bottom', 2000, 'toast-correct');
+      });
+      // -->Show: toast message when connection is off
+      this.network.onDisconnect().subscribe(() => {
+        this.helper.showToast('Disconnected!', 'bottom', 2000, 'toast-wrong');
       });
 
     });

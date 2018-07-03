@@ -22,6 +22,7 @@ export class AnulUnuPage {
     private chatService: ChatFireStoreService
   ) {}
 
+
   ionViewDidLoad() {
     this.formChat = Chat.newChatForm();
   }
@@ -47,6 +48,10 @@ export class AnulUnuPage {
           // -->Send: data to server
           this.chatService.addChat('chats-' + this.role, this.formChat.getRawValue())
             .then((docRef) => {
+              // -->Set: text form to empty
+              this.formChat.get('text').setValue('');
+              // -->Scroll: bottom
+              this.content.scrollToBottom(0);
               console.log("Document written with ID: ", docRef.id);
             })
             .catch((error) => {

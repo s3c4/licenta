@@ -12,7 +12,7 @@
             <ion-input formControlName="password" type="password" name="password" placeholder="Password"></ion-input>
           </ion-col>
           <ion-col col-12 no-padding>
-            <button ion-button icon-only no-margin (click)="submitForm()"><ion-icon name="send"></ion-icon> Login</button>
+            <button ion-button icon-only no-margin (click)="submitForm()" [disabled]="!loginForm.valid"><ion-icon name="send"></ion-icon> Login</button>
           </ion-col>
         </ion-row>
       </form>

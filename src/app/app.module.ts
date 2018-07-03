@@ -5,7 +5,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { environment } from '../environment/environment.prod';
-
+import { Network } from "@ionic-native/network";
 
 // -->Import: pages/components
 import { MyApp } from './app.component';
@@ -67,6 +67,7 @@ import { ChatFireStoreService } from "../services/chatFireStore.service";
   providers: [
     StatusBar,
     SplashScreen,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HelpService,
     AuthService,

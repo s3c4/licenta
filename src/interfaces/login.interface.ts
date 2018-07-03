@@ -27,8 +27,8 @@ export namespace Login {
    */
   export function newLoginForm(data?: Login): FormGroup {
     const fg = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(1)])
     });
     if(data)
       fg.patchValue(data);
